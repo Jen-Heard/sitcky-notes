@@ -1,9 +1,8 @@
 import React from "react";
 
-// turn into an explicit return by adding curly braces after =>
+
 const Header = (props) => {
-  // bring in onSearch via props
-  const callSearch = (e) => {
+   const callSearch = (e) => {
     props.onSearch(e.target.value);
   };
   return (
@@ -18,7 +17,6 @@ const Header = (props) => {
           type="text"
           placeholder="Type here to search..."
           value={props.searchText}
-          // Add onChange event called callSeach and create the function above
           onChange={callSearch}
         />
       </aside>

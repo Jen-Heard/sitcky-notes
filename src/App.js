@@ -17,7 +17,6 @@ class App extends Component {
   };
 
   addNote = () => {
-    // create a new note
     const newNote = {
       id: Date.now(),
       title: "",
@@ -67,22 +66,20 @@ class App extends Component {
       searchText: newSearchText,
     });
   };
-  // delete function; filter and return the notes that don't match the ID of the note we want to delete
+ 
   removeNote = (noteId) => {
     const updatedNotes = this.state.notes.filter((note) => note.id !== noteId);
     this.setState({ notes: updatedNotes });
   };
-  // to capture the state of our note and save it in local storage
+ 
   componentDidUpdate() {
     const stringifiedNotes = JSON.stringify(this.state.notes);
-    // setItem is a function
-    localStorage.setItem("savedNotes", stringifiedNotes);
+     localStorage.setItem("savedNotes", stringifiedNotes);
   }
-  // check to see if there's anything in the local storage saved notes from the last time, and render if so
+ 
   componentDidMount() {
     const stringifiedNotes = localStorage.getItem("savedNotes");
-    // if something is stored, we want to parse it back into the list
-    if (stringifiedNotes) {
+       if (stringifiedNotes) {
       const savedNotes = JSON.parse(stringifiedNotes);
       this.setState({ notes: savedNotes });
     }
@@ -96,7 +93,6 @@ class App extends Component {
           addNote={this.addNote}
           searchText={this.state.searchText}
         />
-        {/* pass the new removeNote funtion down to NotesList.js to activate. got to NoteList.js to continue */}
         <NotesList
           removeNote={this.removeNote}
           onType={this.onType}

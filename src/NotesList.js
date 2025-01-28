@@ -6,7 +6,6 @@ const NotesList = (props) => {
   const searchMatches = props.notes.filter(keepSearchMatches);
 
   const renderNote = (note) => (
-    // pass the removeNote function to Note as props. go to Note.js to complete
     <Note
       removeNote={props.removeNote}
       onType={props.onType}
